@@ -1,10 +1,8 @@
 // src/components/TicketList.jsx
-
 import { useTickets } from "../../context/TicketContext";
 
-export default function TicketList({ searchTerm }) {
+export default function TicketList({ searchTerm, onToggleStatus }) {
     const { tickets } = useTickets();
-
     const filtered = tickets.filter(
         (t) =>
             t.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -18,6 +16,7 @@ export default function TicketList({ searchTerm }) {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Priority</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,11 +38,21 @@ export default function TicketList({ searchTerm }) {
                             >
                                 {ticket.priority}
                             </td>
+                            <td
+                                style={{
+                                    cursor: "pointer",
+                                    color: ticket.status === "Open" ? "green" : "gray",
+                                    fontWeight: "bold",
+                                }}
+                                onClick={() => onToggleStatus(ticket.id)}
+                            >
+                                {ticket.status}
+                            </td>
                         </tr>
                     ))
                 ) : (
                     <tr>
-                        <td colSpan="3">No tickets found</td>
+                        <td colSpan="4">No tickets found</td>
                     </tr>
                 )}
             </tbody>

@@ -13,10 +13,18 @@ export const TicketProvider = ({ children }) => {
         localStorage.setItem("tickets", JSON.stringify(tickets));
     }, [tickets]);
 
-    const addTicket = (ticket) => setTickets([...tickets, { id: Date.now(), ...ticket }]);
+    const addTicket = (ticket) => {
+        const newTicket = {
+            id: Date.now(),
+            ...ticket,
+            status: 'open',
+            createdAt: new Date().toISOString()
+        }
+        setTickets(prev => [newTicket, ...prev])
+    };
 
     return (
-        <TicketContext.Provider value={{ tickets, addTicket }}>
+        <TicketContext.Provider value={{ tickets, setTickets, addTicket }}>
             {children}
         </TicketContext.Provider>
     );
