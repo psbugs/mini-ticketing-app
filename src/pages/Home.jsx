@@ -40,12 +40,13 @@ export default function Home() {
                 </button>
             </div>
             {/* Separate ticket counter reuable component */}
-            <TicketCounter />
-            {/* For Listing Tickets which internally again uses reusable datatable components to show data */}
-            <TicketList
-                searchTerm={searchTerm}
-                onToggleStatus={handleToggleStatus}
-            />
+            {/* /* For Listing Tickets which internally again uses reusable datatable components to show data */}
+
+            {tickets.length > 0 && <><TicketCounter />
+                <TicketList
+                    searchTerm={searchTerm}
+                    onToggleStatus={handleToggleStatus}
+                /></>}
 
             {/* A modal will appear as soon as user click on create ticket button in the form of a modal popup*/}
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
