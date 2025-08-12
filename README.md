@@ -147,20 +147,3 @@ This project is licensed under the **MIT License** – free to use and modify.
 ## 👨‍💻 Author
 
 * **Praveen Sunhare** – [GitHub](https://github.com/psbugs)
-
-These are my detailed answers for several questions :
-
-1. Component Structure
-I followed a feature-based folder structure where each feature (TicketList, TicketForm, TicketSearch, TicketCounter, Modal) has its own directory. This keeps related files together and makes the codebase scalable. Common reusable UI logic, like DataTable, lives in a shared common folder. Pages such as Home.jsx aggregate these components to form complete views. This approach avoids a flat “dump” of components and supports future growth without losing maintainability.
-
-2. State Management
-Ticket data is stored in TicketContext using React’s Context API. This allows multiple components (list, counter, search, form) to access and update tickets without deep prop drilling. Local UI states, like form inputs or modal open/close, are managed within their respective components to keep state ownership clear and avoid unnecessary re-renders.
-
-3. Performance Considerations
-For 1,000+ tickets, I’d add virtualized rendering (e.g., react-window) to only render visible rows. I’d also debounce search input to reduce filtering frequency. Memoization (useMemo, useCallback) would ensure derived data (filtered list) doesn’t recompute unnecessarily.
-
-4. Search Behavior
-I’d implement debounced search to avoid filtering on every keystroke. Search could be case-insensitive, highlight matched text, and support multiple fields (priority, status). For large datasets, I’d move filtering to the backend and use server-side search with pagination. Adding a “clear search” button improves UX.
-
-5. What did you Google or use GPT for?
-I used GPT for structuring a reusable DataTable component and for creating a clean, professional README format. I also referenced GPT for folder structure formatting in Markdown. This allowed me to save time, follow best practices, and keep my implementation maintainable.
