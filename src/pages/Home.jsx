@@ -12,7 +12,7 @@ import "../index.css";
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { tickets, setTickets } = useTickets(); // get context state
+    const { tickets, setTickets } = useTickets();
 
     const handleToggleStatus = (id) => {
         setTickets((prev) =>
@@ -42,7 +42,7 @@ export default function Home() {
             <TicketCounter />
             <TicketList
                 searchTerm={searchTerm}
-                onToggleStatus={handleToggleStatus} // pass down
+                onToggleStatus={handleToggleStatus}
             />
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <h2>Create Ticket</h2>
