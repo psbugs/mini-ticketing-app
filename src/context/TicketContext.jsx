@@ -1,4 +1,3 @@
-// src/context/TicketContext.jsx
 import { createContext, useState, useContext, useEffect } from "react";
 
 const TicketContext = createContext();

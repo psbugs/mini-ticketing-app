@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import { useState } from "react";
 import TicketForm from "../components/TicketForm/TicketForm";
 import TicketList from "../components/TicketList/TicketList";
@@ -30,6 +29,7 @@ export default function Home() {
     return (
         <div className="container">
             <h2>🎫 Ticketing App</h2>
+            {/* Search + Create Ticket container */}
             <div className="header-actions">
                 <TicketSearch setSearchTerm={setSearchTerm} />
                 <button
@@ -39,11 +39,15 @@ export default function Home() {
                     + Create Ticket
                 </button>
             </div>
+            {/* Separate ticket counter reuable component */}
             <TicketCounter />
+            {/* For Listing Tickets which internally again uses reusable datatable components to show data */}
             <TicketList
                 searchTerm={searchTerm}
                 onToggleStatus={handleToggleStatus}
             />
+
+            {/* A modal will appear as soon as user click on create ticket button in the form of a modal popup*/}
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <h2>Create Ticket</h2>
                 <TicketForm onClose={() => setIsModalOpen(false)} />
