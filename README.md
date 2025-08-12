@@ -146,4 +146,4 @@ This project is licensed under the **MIT License** – free to use and modify.
 
 ## 👨‍💻 Author
 
-* **Your Name** – [GitHub](https://github.com/psbugs)
+* **Praveen Sunhare** – [GitHub](https://github.com/psbugs)
